@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group = 'co.com.siigo'
+version = '0.0.1-SNAPSHOT'
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    testImplementation 'io.rest-assured:rest-assured:5.4.0'
+    testImplementation 'net.serenity-bdd:serenity-core:3.9.8'
+    testImplementation 'net.serenity-bdd:serenity-junit5:3.9.8'
+    testImplementation 'net.serenity-bdd:serenity-rest-assured:3.9.8'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty "serenity.outputDirectory", "$buildDir/reports/serenity"
+}
